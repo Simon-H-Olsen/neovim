@@ -53,6 +53,10 @@ augroup MyRustCode
 	autocmd BufReadPre,FileReadPre *.rs set ft=rust
 augroup END
 
+" this way if you create a file using 'nvim myfile.tex', the 
+" correct ':set_filetype?' will be set.
+let g:tex_flavor = "tex"
+
 augroup MyLaTeXCode 
 	" Files with extension .tex are processed as TeX files 
 	autocmd!
@@ -126,7 +130,7 @@ nnoremap gl <C-w>l
 nnoremap <ESC> :let @/ = ""<CR>
 
 " make it easy to edit the init.vim file
-nnoremap <leader>ev :tabedit $MYVIMRC<CR>
+nnoremap <leader>ev :tabedit $MYVIMRC<CR>:vs<CR>:Explore $NVIMCONF<CR>
 
 " the only recursive mappings.
 nnoremap <m-h> ^/<++><CR>v//e<CR>c
@@ -148,7 +152,7 @@ inoremap <expr> <m-l> pumvisible() ? "<CR>" : "l"
 nnoremap <m-u> viwU
 
 nnoremap <C-s> :wa<CR>
-inoremap <C-s> :wa<CR>
+inoremap <C-s> <esc>:wa<CR>
 
 vnoremap ' <esc>`>a'<esc>`<i'<esc>E
 vnoremap " <esc>`>a"<esc>`<i"<esc>E

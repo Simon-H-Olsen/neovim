@@ -47,8 +47,6 @@ endif
 " Plug 'Shougo/neosnippet'
 " Plug 'Shougo/neosnippet-snippets'
 
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-
 let g:deoplete#enable_at_startup = 1
 let g:neosnippet#enable_completed_snippet = 1
 
@@ -60,6 +58,7 @@ let g:autocomplete_flow#insert_paren_after_function = 0
 Plug 'https://github.com/xstrex/FireCode.vim'
 Plug 'https://github.com/sainnhe/vim-color-lost-shrine'
 Plug 'https://github.com/sainnhe/vim-color-atlantis'
+Plug 'https://github.com/chriskempson/base16-vim'
 
 call plug#end()
 
