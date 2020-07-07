@@ -6,6 +6,9 @@ call plug#begin('~/.local/share/nvim/plugged')
 " tags manager
 " Plug 'https://github.com/ludovicchabant/vim-gutentags'
 
+" nerdtree
+Plug 'preservim/nerdtree'
+
 " emmett
 Plug 'https://github.com/mattn/emmet-vim'
 
@@ -14,6 +17,16 @@ Plug 'jiangmiao/auto-pairs'
 
 " highligh yanked words/lines
 Plug 'machakann/vim-highlightedyank'
+
+" fuzzy file and tag search
+Plug 'https://github.com/ctrlpvim/ctrlp.vim'
+
+" redefine default mapping and the default command.
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+
+" ignore files in .gitignore
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 
 " LaTeX support
 Plug 'lervag/vimtex'
@@ -56,9 +69,11 @@ let g:autocomplete_flow#insert_paren_after_function = 0
 		
 " colorschemes
 Plug 'https://github.com/xstrex/FireCode.vim'
-Plug 'https://github.com/sainnhe/vim-color-lost-shrine'
-Plug 'https://github.com/sainnhe/vim-color-atlantis'
 Plug 'https://github.com/chriskempson/base16-vim'
+Plug 'https://github.com/morhetz/gruvbox'
+Plug 'https://github.com/altercation/vim-colors-solarized'
+Plug 'Valloric/YouCompleteMe'
+
 
 call plug#end()
 

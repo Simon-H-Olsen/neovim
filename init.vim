@@ -2,11 +2,11 @@ source /home/simon/.config/nvim/plugins.vim
 
 filetype plugin indent on
 syntax on
-let mapleader=","
+let mapleader=" "
 let maplocalleader = "\\"
 
 " displays tabs as '>' and spaces as '-', to help linting.
-set list
+:set list
 
 :au BufNewFile test.py 0r ~/.config/nvim/templates/python.py
 :au BufNewFile *noter.tex 0r ~/.config/nvim/templates/note_template.tex
@@ -71,23 +71,17 @@ augroup MyJSCode
 augroup END
 
 
-augroup MyGoCode 
-	" Files with extension .js or .vue are processed as JavaScript files 
-	autocmd!
-	autocmd BufReadPre,FileReadPre *.go set ft=go
-augroup END
-
 
 " ------------- Visuals -------------
 
-:set encoding=utf8
-:set tabstop=4
-:set shiftwidth=4
-:set number
-:set autoindent
-:set cindent
-:set backspace=indent,eol,start
-:colorscheme FireCode
+set encoding=utf8
+set tabstop=4
+set shiftwidth=4
+set number
+set autoindent
+set cindent
+set backspace=indent,eol,start
+colorscheme solarized
 "time is milliseconds till yanked lines stop being highlighted
 let g:highlightedyank_highlight_duration = 5000  
 
@@ -107,17 +101,17 @@ set smartcase
 
 
 
-
-
 " ------------- Split Management -------------
 
 set splitbelow 				" ensures that when you create a new horizontal split, the split is below
 set splitright				" ensures that when you create a new vertical split, the split is to the right
 
-nnoremap gj <C-w>j
-nnoremap gh <C-w>h
-nnoremap gk <C-w>k
-nnoremap gl <C-w>l
+nnoremap <c-j> :wincmd j<cr>
+nnoremap <c-k> :wincmd k<cr>
+nnoremap <c-l> :wincmd l<cr>
+nnoremap <c-h> :wincmd h<cr>
+
+nnoremap <leader>p :NERDTreeToggle<cr>
 
 
 " ------------- Mappings -------------
@@ -130,22 +124,28 @@ nnoremap gl <C-w>l
 nnoremap <ESC> :let @/ = ""<CR>
 
 " make it easy to edit the init.vim file
-nnoremap <leader>ev :tabedit $MYVIMRC<CR>:vs<CR>:Explore $NVIMCONF<CR>
+nnoremap <leader>ev :tabedit $MYVIMRC<CR>:NERDTreeToggle $NVIMCONF<cr>
 
-" the only recursive mappings.
-nnoremap <m-h> ^/<++><CR>v//e<CR>c
-inoremap <m-h> <ESC>^/<++><CR>v//e<CR>c
+nnoremap <c-h> ^/<++><CR>v//e<CR>c
+inoremap <c-h> <ESC>^/<++><CR>v//e<CR>c
 
 nnoremap j gj
 nnoremap k gk
 nnoremap J 3j
 nnoremap K 3k
-nnoremap L ddp
-nnoremap H ddkP
-inoremap JK <ESC>
-inoremap <expr> <m-j> pumvisible() ? "<DOWN>" : "j"
-inoremap <expr> <m-k> pumvisible() ? "<UP>" : "k"
-inoremap <expr> <m-l> pumvisible() ? "<CR>" : "l"
+inoremap <expr> <c-j> pumvisible() ? "<DOWN>" : "<cr>"
+inoremap <expr> <c-k> pumvisible() ? "<UP>" : "k"
+inoremap <expr> <c-l> pumvisible() ? "<CR>" : "l"
+imap <m-j> <esc>
+
+nnoremap <m-j> ]]
+nnoremap <m-k> [[
+nnoremap <m-h> %
+nnoremap <m-l> $
+nnoremap <leader>k ddkP
+nnoremap <leader>j ddp
+nmap <leader><leader> V
+nnoremap <leader>y "+P
 
 
 " change word to upper case. useful for long constant names.
@@ -157,6 +157,7 @@ inoremap <C-s> <esc>:wa<CR>
 vnoremap ' <esc>`>a'<esc>`<i'<esc>E
 vnoremap " <esc>`>a"<esc>`<i"<esc>E
 
+nnoremap <silent> <leader>gd :YcmCompleter GoTo<cr>
 
 " I need to add support for various latex
 " snippets, so I can backup latex templates with git.
@@ -164,16 +165,10 @@ vnoremap " <esc>`>a"<esc>`<i"<esc>E
 " windows.
 " also it is super awkward to use double quotes.
 " : is also too awkward to use.
-" should I remap 1-9 + 0, so default is pressing these keys with shift? I
-" rarely use the numbers when programming, but I use all the other keys more
-" often.
 " the core philosophy of my vim workflow should be to use touch typing
 " and be as fluent as possible, so there is no thinking and no mental blocks
 " or something that makes you tired to think of.
 " in vimtutor they have links you can click enter on to activate.
-" also need shortcuts for moving lines up and down
-" % command can be used to debug program with unmatched paranthesis
-" <C-g> shown cursor info
 " use :r <FILENAME> to insert the contents of a file
 " similarly :r !cmd places the output of a command in the buffer
 " press <F1> for online help
