@@ -126,8 +126,8 @@ nnoremap <ESC> :let @/ = ""<CR>
 " make it easy to edit the init.vim file
 nnoremap <leader>ev :tabedit $MYVIMRC<CR>:NERDTreeToggle $NVIMCONF<cr>
 
-nnoremap <c-h> ^/<++><CR>v//e<CR>c
-inoremap <c-h> <ESC>^/<++><CR>v//e<CR>c
+nnoremap <c-n> ^/<++><CR>v//e<CR>c
+inoremap <c-m> <ESC>^/<++><CR>v//e<CR>c
 
 nnoremap j gj
 nnoremap k gk
@@ -146,6 +146,7 @@ nnoremap <leader>k ddkP
 nnoremap <leader>j ddp
 nmap <leader><leader> V
 nnoremap <leader>y "+P
+nnoremap <leader>gh :Ack 
 
 
 " change word to upper case. useful for long constant names.

@@ -3,14 +3,17 @@
 " - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.local/share/nvim/plugged')
 
-" tags manager
-" Plug 'https://github.com/ludovicchabant/vim-gutentags'
+" autocompletion
+Plug 'Valloric/YouCompleteMe'
 
 " nerdtree
 Plug 'preservim/nerdtree'
 
 " emmett
 Plug 'https://github.com/mattn/emmet-vim'
+
+" ack - run your favourite search tool from vim.
+Plug 'mileszs/ack.vim'
 
 " creates closing bracket/parenthesis automatically.
 Plug 'jiangmiao/auto-pairs'
@@ -41,27 +44,10 @@ let g:vimtex_compiler_latexmk_engines = {
     \ 'context (xetex)'  : '-pdf -pdflatex=''texexec --xtx''',
     \}
 
-" Rust programming support
-Plug 'rust-lang/rust.vim'
-let g:rustfmt_autosave = 1
 
 " syntax highlighting for .Vue component files
 Plug 'https://github.com/posva/vim-vue'
 
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
-
-" Plug 'wokalski/autocomplete-flow'
-" Plug 'Shougo/neosnippet'
-" Plug 'Shougo/neosnippet-snippets'
-
-let g:deoplete#enable_at_startup = 1
-let g:neosnippet#enable_completed_snippet = 1
 
 " if neosnippet integration is not enabled, insert opening parenthesis when
 " completing function name.
@@ -72,7 +58,6 @@ Plug 'https://github.com/xstrex/FireCode.vim'
 Plug 'https://github.com/chriskempson/base16-vim'
 Plug 'https://github.com/morhetz/gruvbox'
 Plug 'https://github.com/altercation/vim-colors-solarized'
-Plug 'Valloric/YouCompleteMe'
 
 
 call plug#end()
