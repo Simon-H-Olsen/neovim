@@ -124,10 +124,10 @@ nnoremap <leader>p :NERDTreeToggle<cr>
 nnoremap <ESC> :let @/ = ""<CR>
 
 " make it easy to edit the init.vim file
-nnoremap <leader>ev :tabedit $MYVIMRC<CR>:NERDTreeToggle $NVIMCONF<cr>
+nnoremap <leader>ev :tabedit $MYVIMRC<CR>:NERDTreeToggle /home/simon/.config/nvim<cr>
 
-nnoremap <c-n> ^/<++><CR>v//e<CR>c
-inoremap <c-m> <ESC>^/<++><CR>v//e<CR>c
+" nnoremap <c-n> ^/<++><CR>v//e<CR>c
+" inoremap <c-m> <ESC>^/<++><CR>v//e<CR>c
 
 nnoremap j gj
 nnoremap k gk
@@ -157,6 +157,8 @@ inoremap <C-s> <esc>:wa<CR>
 
 vnoremap ' <esc>`>a'<esc>`<i'<esc>E
 vnoremap " <esc>`>a"<esc>`<i"<esc>E
+vnoremap ( <esc>`>a)<esc>`<i(<esc>E
+vnoremap { <esc>`>a}<esc>`<i{<esc>E
 
 nnoremap <silent> <leader>gd :YcmCompleter GoTo<cr>
 
