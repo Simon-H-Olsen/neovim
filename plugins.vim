@@ -32,9 +32,8 @@ Plug 'honza/vim-snippets'
 
 
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<c-m>"
-" let g:UltiSnipsExpandTrigger="<c-m>"
-let g:UltiSnipsJumpForwardTrigger="<c-m>"
+let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-q>"
 
 " If you want :UltiSnipsEdit to split your window.
@@ -45,7 +44,7 @@ let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 
 " ignore files in .gitignore
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+let g:ctrlp_user_command = ['.git', 'cd %s; and git ls-files -co --exclude-standard']
 
 " LaTeX support
 Plug 'lervag/vimtex'

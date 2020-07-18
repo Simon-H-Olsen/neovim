@@ -121,16 +121,16 @@ nnoremap <leader>p :NERDTreeToggle<cr>
 "  Therefore you should almost always use nonrecursive mappings.
 
 "This unsets the "last search pattern" register by hitting <ESC>
-nnoremap <ESC> :let @/ = ""<CR>
+nnoremap <esc> :let @/ = ""<cr>
 
 " make it easy to edit the init.vim file
-nnoremap <leader>ev :tabedit $MYVIMRC<CR>:NERDTreeToggle /home/simon/.config/nvim<cr>
+nnoremap <leader>ev :tabedit $MYVIMRC<cr>:NERDTreeToggle /home/simon/.config/nvim<cr>
 
 nnoremap j gj
 nnoremap k gk
-inoremap <expr> <c-j> pumvisible() ? "<DOWN>" : "<cr>"
-inoremap <expr> <c-k> pumvisible() ? "<UP>" : "k"
-inoremap <expr> <c-l> pumvisible() ? "<CR>" : "l"
+inoremap <expr> <t-j> pumvisible() ? "<DOWN>" : "<cr>"
+inoremap <expr> <t-k> pumvisible() ? "<UP>" : "k"
+inoremap <expr> <t-l> pumvisible() ? "<CR>" : "l"
 
 nnoremap <c-j> ]]
 nnoremap <c-k> [[
