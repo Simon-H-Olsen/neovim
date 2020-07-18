@@ -24,6 +24,22 @@ Plug 'machakann/vim-highlightedyank'
 " fuzzy file and tag search
 Plug 'https://github.com/ctrlpvim/ctrlp.vim'
 
+" Track the engine.
+Plug 'SirVer/ultisnips'
+
+" Snippets are separated from the engine. Add this if you want them:
+Plug 'honza/vim-snippets'
+
+
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<c-m>"
+" let g:UltiSnipsExpandTrigger="<c-m>"
+let g:UltiSnipsJumpForwardTrigger="<c-m>"
+let g:UltiSnipsJumpBackwardTrigger="<c-q>"
+
+" If you want :UltiSnipsEdit to split your window.
+" let g:UltiSnipsEditSplit="vertical"
+
 " redefine default mapping and the default command.
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
@@ -62,4 +78,4 @@ Plug 'https://github.com/altercation/vim-colors-solarized'
 
 call plug#end()
 
- 
+

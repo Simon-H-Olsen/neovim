@@ -106,10 +106,10 @@ set smartcase
 set splitbelow 				" ensures that when you create a new horizontal split, the split is below
 set splitright				" ensures that when you create a new vertical split, the split is to the right
 
-nnoremap <c-j> :wincmd j<cr>
-nnoremap <c-k> :wincmd k<cr>
-nnoremap <c-l> :wincmd l<cr>
-nnoremap <c-h> :wincmd h<cr>
+nnoremap J :wincmd j<cr>
+nnoremap K :wincmd k<cr>
+nnoremap L :wincmd l<cr>
+nnoremap H :wincmd h<cr>
 
 nnoremap <leader>p :NERDTreeToggle<cr>
 
@@ -126,22 +126,16 @@ nnoremap <ESC> :let @/ = ""<CR>
 " make it easy to edit the init.vim file
 nnoremap <leader>ev :tabedit $MYVIMRC<CR>:NERDTreeToggle /home/simon/.config/nvim<cr>
 
-" nnoremap <c-n> ^/<++><CR>v//e<CR>c
-" inoremap <c-m> <ESC>^/<++><CR>v//e<CR>c
-
 nnoremap j gj
 nnoremap k gk
-nnoremap J 3j
-nnoremap K 3k
 inoremap <expr> <c-j> pumvisible() ? "<DOWN>" : "<cr>"
 inoremap <expr> <c-k> pumvisible() ? "<UP>" : "k"
 inoremap <expr> <c-l> pumvisible() ? "<CR>" : "l"
-imap <m-j> <esc>
 
-nnoremap <m-j> ]]
-nnoremap <m-k> [[
-nnoremap <m-h> %
-nnoremap <m-l> $
+nnoremap <c-j> ]]
+nnoremap <c-k> [[
+nnoremap <c-h> %
+nnoremap <c-l> $
 nnoremap <leader>k ddkP
 nnoremap <leader>j ddp
 nmap <leader><leader> V
@@ -150,10 +144,10 @@ nnoremap <leader>gh :Ack
 
 
 " change word to upper case. useful for long constant names.
-nnoremap <m-u> viwU
+vnoremap <c-u> viwU
 
-nnoremap <C-s> :wa<CR>
-inoremap <C-s> <esc>:wa<CR>
+nnoremap <c-s> :wa<CR>
+inoremap <c-s> <esc>:wa<CR>
 
 vnoremap ' <esc>`>a'<esc>`<i'<esc>E
 vnoremap " <esc>`>a"<esc>`<i"<esc>E
