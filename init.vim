@@ -4,6 +4,7 @@ filetype plugin indent on
 syntax on
 let mapleader=" "
 let maplocalleader = "\\"
+noremap <c-c><c-c> <esc>:!/home/simon/julia-1.4.2/bin/julia %<cr>
 
 " displays tabs as '>' and spaces as '-', to help linting.
 :set list
@@ -122,6 +123,7 @@ nnoremap <leader>p :NERDTreeToggle<cr>
 
 "This unsets the "last search pattern" register by hitting <ESC>
 nnoremap <esc> :let @/ = ""<cr>
+inoremap <c-c> <esc>:let @/ = ""<cr>
 
 " make it easy to edit the init.vim file
 nnoremap <leader>ev :tabedit $MYVIMRC<cr>:NERDTreeToggle /home/simon/.config/nvim<cr>

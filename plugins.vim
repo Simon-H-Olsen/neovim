@@ -3,6 +3,14 @@
 " - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.local/share/nvim/plugged')
 
+
+" julia support
+Plug 'https://github.com/JuliaEditorSupport/julia-vim'
+
+" repl support
+" Plug 'https://github.com/jpalardy/vim-slime'
+" let g:slime_target = "tmux"
+
 " autocompletion
 Plug 'Valloric/YouCompleteMe'
 
