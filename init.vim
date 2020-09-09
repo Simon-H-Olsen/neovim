@@ -1,80 +1,18 @@
-source /home/simon/.config/nvim/plugins.vim
+syntax on
 
 filetype plugin indent on
-syntax on
+
 let mapleader=" "
 let maplocalleader = "\\"
-noremap <c-c><c-c> <esc>:!/home/simon/julia-1.4.2/bin/julia %<cr>
-
-" displays tabs as '>' and spaces as '-', to help linting.
-:set list
-
-:au BufNewFile test.py 0r ~/.config/nvim/templates/python.py
-:au BufNewFile *noter.tex 0r ~/.config/nvim/templates/note_template.tex
-:au BufNewFile *report.tex 0r ~/.config/nvim/templates/report_template.tex
 
 
-" ------------- Auto Commands -------------
-"  autocommands are a way to tell vim to run certain commands whenever certain
-"  events happen.
-"  skim :help autocmd-events to see a list of all the events you can bind autocommands to. 
-
-" important to use augroups. Otherwise everytime you source the nvim.init file
-" all the autocmds will be duplicated, and when they are executed all
-" duplicates will be run. So after sourcing nvim.init a few times neovim will
-" become more are more laggy.
-" using augroup must be followed by autocmd!
-augroup autosourcing 
-	" automatically source init.vim on save
-	autocmd!
-	autocmd BufWritePost *.vim source %
-	" indent html files before reading and writing
-	autocmd BufWritePre,BufRead *.html :normal gg=G
-
-	" js snippet
-	autocmd FileType javascript :iabbrev <buffer> iff if ()<left>
-	autocmd FileType tex :iabbrev <buffer> REP <ESC>:r !cat ~/.config/nvim/templates/report_template.tex <CR>
-	autocmd FileType tex :iabbrev <buffer> NOTE <ESC>:r !cat ~/.config/nvim/templates/note_template.tex <CR>   
-	autocmd FileType tex :iabbrev <buffer> PRES <ESC>:r !cat ~/.config/nvim/templates/presentation.tex <CR>
-
-	autocmd FileType latex :iabbrev <buffer> listing \begin{lstlisting}<cr><cr>\end{lstlisting}<up>
-	autocmd FileType tex :iabbrev <buffer> listing \begin{lstlisting}<cr><cr>\end{lstlisting}<up>
-	autocmd FileType rs :source /home/simon/.config/nvim/rust.vim
-	autocmd FileType javascript source /home/simon/.config/nvim/web_development.vim
-
-	" an example of the FileType event.
-	" :autocmd FileType javascript nnoremap <buffer> <localleader>c I//<esc>
-augroup END
-
-" autocmd FileType tex :source /home/simon/.config/nvim/latex_setup.vim
-
-augroup MyRustCode 
-	" Files with extension .tex are processed as TeX files 
-	autocmd!
-	autocmd BufReadPre,FileReadPre *.rs set ft=rust
-augroup END
-
-" this way if you create a file using 'nvim myfile.tex', the 
-" correct ':set_filetype?' will be set.
-let g:tex_flavor = "tex"
-
-augroup MyLaTeXCode 
-	" Files with extension .tex are processed as TeX files 
-	autocmd!
-	autocmd BufReadPre,FileReadPre *.tex set ft=tex
-augroup END
-
-augroup MyJSCode 
-	" Files with extension .js or .vue are processed as JavaScript files 
-	autocmd!
-	autocmd BufReadPre,FileReadPre *.js set ft=javascript
-	autocmd BufReadPre,FileReadPre *.vue set ft=javascript
-augroup END
-
+source /home/simon/.config/nvim/plugins.vim
 
 
 " ------------- Visuals -------------
 
+" displays tabs as '>' and spaces as '-', to help linting.
+set list
 set encoding=utf8
 set tabstop=4
 set shiftwidth=4
@@ -83,10 +21,9 @@ set autoindent
 set cindent
 set backspace=indent,eol,start
 colorscheme solarized
-"time is milliseconds till yanked lines stop being highlighted
-let g:highlightedyank_highlight_duration = 5000  
 
-set t_CO=256 								"use 256 colors for terminal vim
+"use 256 colors for terminal vim
+set t_CO=256
 
 
 
@@ -101,11 +38,12 @@ set smartcase
 " \C and \c can be included anywhere in the search string.
 
 
-
 " ------------- Split Management -------------
 
-set splitbelow 				" ensures that when you create a new horizontal split, the split is below
-set splitright				" ensures that when you create a new vertical split, the split is to the right
+" for a new horizontal split, the split is below
+set splitbelow
+" for a new vertical split, the split is to the right
+set splitright
 
 nnoremap J :wincmd j<cr>
 nnoremap K :wincmd k<cr>
@@ -113,6 +51,7 @@ nnoremap L :wincmd l<cr>
 nnoremap H :wincmd h<cr>
 
 nnoremap <leader>p :NERDTreeToggle<cr>
+nnoremap <leader>o :wincmd o<cr>
 
 
 " ------------- Mappings -------------
@@ -130,19 +69,12 @@ nnoremap <leader>ev :tabedit $MYVIMRC<cr>:NERDTreeToggle /home/simon/.config/nvi
 
 nnoremap j gj
 nnoremap k gk
-inoremap <expr> <t-j> pumvisible() ? "<DOWN>" : "<cr>"
-inoremap <expr> <t-k> pumvisible() ? "<UP>" : "k"
-inoremap <expr> <t-l> pumvisible() ? "<CR>" : "l"
+inoremap <expr> <m-j> pumvisible() ? "<DOWN>" : "<cr>"
+inoremap <expr> <m-k> pumvisible() ? "<UP>" : "k"
+inoremap <expr> <m-l> pumvisible() ? "<CR>" : "l"
 
-nnoremap <c-j> ]]
-nnoremap <c-k> [[
-nnoremap <c-h> %
 nnoremap <c-l> $
-nnoremap <leader>k ddkP
-nnoremap <leader>j ddp
-nmap <leader><leader> V
-nnoremap <leader>y "+P
-nnoremap <leader>gh :Ack 
+nnoremap <leader>gh :Ack
 
 
 " change word to upper case. useful for long constant names.
@@ -163,16 +95,11 @@ nnoremap <silent> <leader>gd :YcmCompleter GoTo<cr>
 " make it easier to change tabs between applications and between terminal
 " windows.
 " also it is super awkward to use double quotes.
-" : is also too awkward to use.
-" the core philosophy of my vim workflow should be to use touch typing
-" and be as fluent as possible, so there is no thinking and no mental blocks
-" or something that makes you tired to think of.
 " in vimtutor they have links you can click enter on to activate.
 " use :r <FILENAME> to insert the contents of a file
 " similarly :r !cmd places the output of a command in the buffer
 " press <F1> for online help
 " use {  } to go next/previous paragraph
-" you can also use space key for mapping
 " optimize vim for search and replace with regexp
 
 " -------------- Terminal Mappings ----------------
@@ -189,5 +116,62 @@ tmap <C-i> <ESC>
 
 :iabbrev adn and
 :iabbrev lorem <ESC>:r !cat ~/.config/nvim/templates/Lorem\ Ipsum<CR>A
+
+
+
+" ------------- Auto Commands -------------
+"  autocommands are a way to tell vim to run certain commands whenever certain
+"  events happen.
+"  skim :help autocmd-events to see a list of all the events you can bind autocommands to.
+
+" important to use augroups. Otherwise everytime you source the nvim.init file
+" all the autocmds will be duplicated, and when they are executed all
+" duplicates will be run. So after sourcing nvim.init a few times neovim will
+" become more are more laggy.
+" using augroup must be followed by autocmd!
+augroup autosourcing 
+	" automatically source init.vim on save
+	autocmd!
+	autocmd BufWritePost *.vim source %
+
+	" an example of the FileType event.
+	" :autocmd FileType javascript nnoremap <buffer> <localleader>c I//<esc>
+augroup END
+
+
+augroup MyLaTeXCode 
+	" Files with extension .tex are processed as TeX files 
+	autocmd!
+	autocmd BufReadPre,FileReadPre *.tex set ft=tex
+	" autocmd FileType tex :source /home/simon/.config/nvim/latex_setup.vim
+	au BufNewFile *noter.tex 0r ~/.config/nvim/templates/note_template.tex
+	au BufNewFile *report.tex 0r ~/.config/nvim/templates/report_template.tex
+
+	autocmd FileType tex :iabbrev <buffer> listing \begin{lstlisting}<cr><cr>\end{lstlisting}<up>
+
+augroup END
+
+augroup MyJuliaCode 
+	autocmd!
+	autocmd BufReadPre,FileReadPre *.jl set ft=julia
+
+	autocmd FileType julia source /home/simon/.config/nvim/julia.vim
+
+augroup END
+
+
+augroup MyJSCode 
+	" Files with extension .js or .vue are processed as JavaScript files 
+	autocmd!
+	autocmd BufReadPre,FileReadPre *.js set ft=javascript
+	autocmd BufReadPre,FileReadPre *.vue set ft=javascript
+
+	" indent html files before reading and writing
+	autocmd BufWritePre,BufRead *.html :normal gg=G
+
+	autocmd FileType javascript source /home/simon/.config/nvim/web_development.vim
+
+augroup END
+
 
 
