@@ -82,16 +82,6 @@ let g:vimtex_compiler_latexmk_engines = {
 let g:autocomplete_flow#insert_paren_after_function = 0
 
 
-" deoplete plugin
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
-let g:deoplete#enable_at_startup = 1
-
 " colorschemes
 Plug 'https://github.com/xstrex/FireCode.vim'
 Plug 'https://github.com/chriskempson/base16-vim'
