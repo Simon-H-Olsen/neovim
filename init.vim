@@ -1,30 +1,29 @@
-syntax on
-
+" enable filetype detection. now ':set filetype?' returns a filetype.
+" enable plugin detection. if the filetype is detected the appropriate plugin
+" is loaded.
 filetype plugin indent on
+"
 
 let mapleader=" "
 let maplocalleader = "\\"
 
+" enable syntax highlighting
+syntax on
+
+" now you do not get an error if you switch away from an unsaved buffer
+set hidden
 
 source /home/simon/.config/nvim/plugins.vim
 
 
-" ------------- Visuals -------------
-
 " displays tabs as '>' and spaces as '-', to help linting.
 set list
+" sets the output encoding displayed in the terminal
 set encoding=utf8
-set tabstop=4
-set shiftwidth=4
-set number
-set autoindent
-set cindent
+" now backspace works beyond the text you insert.
 set backspace=indent,eol,start
+set background=dark
 colorscheme solarized
-
-"use 256 colors for terminal vim
-set t_CO=256
-
 
 
 " ------------- Search -------------
@@ -136,6 +135,9 @@ augroup autosourcing
 
 	" an example of the FileType event.
 	" :autocmd FileType javascript nnoremap <buffer> <localleader>c I//<esc>
+	" usually this won't be necessary since ftplugin is on. this means
+	" that vim searches the after directory after any built in plugins 
+	" have been applied.
 augroup END
 
 
@@ -150,15 +152,6 @@ augroup MyLaTeXCode
 	autocmd FileType tex :iabbrev <buffer> listing \begin{lstlisting}<cr><cr>\end{lstlisting}<up>
 
 augroup END
-
-augroup MyJuliaCode 
-	autocmd!
-	autocmd BufReadPre,FileReadPre *.jl set ft=julia
-
-	autocmd FileType julia source /home/simon/.config/nvim/julia.vim
-
-augroup END
-
 
 augroup MyJSCode 
 	" Files with extension .js or .vue are processed as JavaScript files 

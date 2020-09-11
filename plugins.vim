@@ -21,6 +21,9 @@ let g:latex_to_unicode_keymap = 1
 " nerdtree
 Plug 'preservim/nerdtree'
 
+" (un)comment lines with 'gcc' or if selected simply 'gc'
+Plug 'https://github.com/tpope/vim-commentary'
+
 " ack - run your favourite search tool from vim.
 Plug 'mileszs/ack.vim'
 
