@@ -1,6 +1,6 @@
 " enable filetype detection. now ':set filetype?' returns a filetype.
 " enable plugin detection. if the filetype is detected the appropriate plugin
-" is loaded.
+" in the 'after' directory is loaded.
 filetype plugin indent on
 "
 
@@ -89,31 +89,11 @@ vnoremap { <esc>`>a}<esc>`<i{<esc>E
 
 nnoremap <silent> <leader>gd :YcmCompleter GoTo<cr>
 
-" I need to add support for various latex
-" snippets, so I can backup latex templates with git.
-" make it easier to change tabs between applications and between terminal
-" windows.
-" also it is super awkward to use double quotes.
-" in vimtutor they have links you can click enter on to activate.
-" use :r <FILENAME> to insert the contents of a file
-" similarly :r !cmd places the output of a command in the buffer
-" press <F1> for online help
-" use {  } to go next/previous paragraph
-" optimize vim for search and replace with regexp
-
-" -------------- Terminal Mappings ----------------
-
-
-tmap <ESC> <C-\><C-n>
-tmap <C-i> <ESC>
-
 
 " ---------------- Abbreviations -------------------
-" meant for use in insert, replace (R), and command modes
 " abbreviations are more robust than mappings, in that they are only
 " triggered if the abbreviation is after a space.
 
-:iabbrev adn and
 :iabbrev lorem <ESC>:r !cat ~/.config/nvim/templates/Lorem\ Ipsum<CR>A
 
 
@@ -139,32 +119,4 @@ augroup autosourcing
 	" that vim searches the after directory after any built in plugins 
 	" have been applied.
 augroup END
-
-
-augroup MyLaTeXCode 
-	" Files with extension .tex are processed as TeX files 
-	autocmd!
-	autocmd BufReadPre,FileReadPre *.tex set ft=tex
-	" autocmd FileType tex :source /home/simon/.config/nvim/latex_setup.vim
-	au BufNewFile *noter.tex 0r ~/.config/nvim/templates/note_template.tex
-	au BufNewFile *report.tex 0r ~/.config/nvim/templates/report_template.tex
-
-	autocmd FileType tex :iabbrev <buffer> listing \begin{lstlisting}<cr><cr>\end{lstlisting}<up>
-
-augroup END
-
-augroup MyJSCode 
-	" Files with extension .js or .vue are processed as JavaScript files 
-	autocmd!
-	autocmd BufReadPre,FileReadPre *.js set ft=javascript
-	autocmd BufReadPre,FileReadPre *.vue set ft=javascript
-
-	" indent html files before reading and writing
-	autocmd BufWritePre,BufRead *.html :normal gg=G
-
-	autocmd FileType javascript source /home/simon/.config/nvim/web_development.vim
-
-augroup END
-
-
 
