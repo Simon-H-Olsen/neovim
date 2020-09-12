@@ -15,17 +15,11 @@ let g:latex_to_unicode_keymap = 1
 " Plug 'https://github.com/jpalardy/vim-slime'
 " let g:slime_target = "tmux"
 
-" autocompletion
-" Plug 'Valloric/YouCompleteMe'
-
 " nerdtree
 Plug 'preservim/nerdtree'
 
 " (un)comment lines with 'gcc' or if selected simply 'gc'
 Plug 'https://github.com/tpope/vim-commentary'
-
-" ack - run your favourite search tool from vim.
-Plug 'mileszs/ack.vim'
 
 " creates closing bracket/parenthesis automatically.
 Plug 'jiangmiao/auto-pairs'
@@ -38,6 +32,14 @@ let g:highlightedyank_highlight_duration = 5000
 
 " fuzzy file and tag search
 Plug 'https://github.com/ctrlpvim/ctrlp.vim'
+
+" redefine default mapping and the default command.
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+
+" ignore files in .gitignore
+let g:ctrlp_user_command = ['.git', 'cd %s; and git ls-files -co --exclude-standard']
+
 
 " Track the engine.
 "Plug 'SirVer/ultisnips'
@@ -53,13 +55,6 @@ let g:UltiSnipsJumpBackwardTrigger="<c-q>"
 
 " If you want :UltiSnipsEdit to split your window.
 " let g:UltiSnipsEditSplit="vertical"
-
-" redefine default mapping and the default command.
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-
-" ignore files in .gitignore
-let g:ctrlp_user_command = ['.git', 'cd %s; and git ls-files -co --exclude-standard']
 
 " LaTeX support
 Plug 'lervag/vimtex'

@@ -12,6 +12,7 @@ syntax on
 
 " now you do not get an error if you switch away from an unsaved buffer
 set hidden
+set noswapfile
 
 source /home/simon/.config/nvim/plugins.vim
 
