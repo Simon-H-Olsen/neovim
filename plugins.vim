@@ -30,15 +30,10 @@ Plug 'machakann/vim-highlightedyank'
 " time in milliseconds till yanked lines stop being highlighted
 let g:highlightedyank_highlight_duration = 5000
 
-" fuzzy file and tag search
-Plug 'https://github.com/ctrlpvim/ctrlp.vim'
 
-" redefine default mapping and the default command.
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
 
-" ignore files in .gitignore
-let g:ctrlp_user_command = ['.git', 'cd %s; and git ls-files -co --exclude-standard']
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 
 " Track the engine.

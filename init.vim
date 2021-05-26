@@ -16,6 +16,8 @@ set noswapfile
 
 source /home/simon/.config/nvim/plugins.vim
 
+nmap <c-f> :Files<cr>
+
 
 " displays tabs as '>' and spaces as '-', to help linting.
 set list
@@ -24,7 +26,7 @@ set encoding=utf8
 " now backspace works beyond the text you insert.
 set backspace=indent,eol,start
 set background=dark
-colorscheme solarized
+colorscheme gruvbox
 
 
 " ------------- Search -------------
